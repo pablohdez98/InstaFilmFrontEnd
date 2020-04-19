@@ -1,1 +1,89 @@
-<p>create-user works!</p>
+ <div class="container bg-gray">
+   <form [formGroup]="createForm" (ngSubmit)="onSubmit(createForm.value)">
+    <div class="d-flex flex-wrap">
+
+      <div class="col-md-6 col-12">
+
+        <div class="my-2">
+          <div class="row">
+            <label for="name">Nombre</label>
+          </div>
+
+          <div class="row">
+            <input formControlName="nombre" class="w-50" type="text" id="name">
+          </div>
+        </div>
+
+        <div class="my-2">
+          <div class="row">
+            <label for="name">Apellidos</label>
+          </div>
+
+          <div class="row">
+            <input formControlName="apellidos" class="w-50" type="text" id="apellidos">
+          </div>
+        </div>
+
+        <div class="my-2">
+          <div class="row">
+            <label for="name">Email</label>
+          </div>
+
+          <div class="row">
+            <input formControlName="email" class="w-50" type="text" id="email">
+          </div>
+        </div>
+
+        <div class="my-2">
+          <div class="row">
+            <label for="contraseña">Contraseña</label>
+          </div>
+
+          <div class="row">
+            <input formControlName="contraseña" class="w-50" type="text" id="contraseña">
+          </div>
+        </div>
+
+        <div class="my-2">
+          <div class="row">
+            <label for="rol">Rol</label>
+          </div>
+
+          <div class="row">
+            <input formControlName="rol" class="w-50" type="text" id="rol">
+          </div>
+        </div>
+
+        <div class="my-2">
+          <div class="row">
+            <label for="categoria">Categoría</label>
+          </div>
+
+          <div class="row">
+            <input formControlName="categoria" class="w-50" type="text" id="categoria">
+          </div>
+        </div>
+
+        <div class="my-2">
+          <div class="row">
+            <label for="informacion">Datos adicionales</label>
+          </div>
+
+          <div class="row">
+            <textarea formControlName="informacion" class="w-50" id="informacion"></textarea>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-6 col-12 d-flex align-items-center justify-content-center">
+        <button class="btn btn-dark">Seleccionar imagen</button>
+      </div>
+
+    </div>
+    <div class="d-flex justify-content-center my-3">
+      <button type="submit" class="btn btn-success mr-5">Crear</button>
+      <button class="btn btn-danger">Cancelar</button>
+    </div>
+   </form>
+ </div>
