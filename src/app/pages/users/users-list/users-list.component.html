@@ -1,1 +1,30 @@
-<p>users-list works!</p>
+<div class="row justify-content-between container-fluid align-items-center mb-2 pr-0">
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Buscador" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+  </form>
+  <button class="btn btn-success">Crear usuario</button>
+</div>
+<table class="table table-responsive-sm" datatable [dtOptions]="datatableOption">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Imagen</th>
+      <th scope="col">Apellidos, Nombre <span class="fas fa-arrow-up mr-1"></span><span class="fas fa-arrow-down"></span></th>
+      <th scope="col">Categoría</th>
+      <th scope="col">Rol</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><i class="fas fa-user-circle"></i></td>
+      <td>Hernández Carrascosa, Pablo</td>
+      <td>Categoría</td>
+      <td>Estudiante</td>
+      <td>
+        <span (click)="updateUser()"><i class="fas fa-user-edit mr-1"></i></span>
+        <span (click)="deleteUser()"><i class="fas fa-trash text-danger"></i></span>
+      </td>
+    </tr>
+  </tbody>
+</table>
