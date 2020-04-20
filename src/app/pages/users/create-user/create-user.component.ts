@@ -13,13 +13,14 @@ export class CreateUserComponent implements OnInit {
 
   ngOnInit() {
     this.createForm = this.formBuilder.group({
-      nombre: ['', Validators.required],
-      apellidos: ['', Validators.required],
+      name: ['', Validators.required],
+      surname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      contraseña: ['', [Validators.required, Validators.minLength(6)]],
-      rol: ['', Validators.required],
-      categoria: ['', Validators.required],
-      informacion: '',
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      role: ['', Validators.required],
+      category: ['', Validators.required],
+      information: '',
+      image:'',
     })
   }
   onSubmit(form){
