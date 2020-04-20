@@ -1,1 +1,96 @@
-<p>update-user works!</p>
+<div class="container bg-gray py-3">
+  <form [formGroup]="updateForm" (ngSubmit)="onSubmit(updateForm.value)">
+    <div class="d-flex flex-wrap">
+
+      <div class="col-md-6 col-12">
+
+        <div class="my-2">
+          <div class="row">
+            <label for="name">Nombre</label>
+          </div>
+
+          <div class="row">
+            <input formControlName="name" class="w-50" type="text" id="name">
+          </div>
+        </div>
+
+        <div class="my-2">
+          <div class="row">
+            <label for="surname">Apellidos</label>
+          </div>
+
+          <div class="row">
+            <input formControlName="surname" class="w-50" type="text" id="surname">
+          </div>
+        </div>
+
+        <div class="my-2">
+          <div class="row">
+            <label for="email">Email</label>
+          </div>
+
+          <div class="row">
+            <input formControlName="email" class="w-50" type="text" id="email">
+          </div>
+        </div>
+
+        <div class="my-2">
+          <div class="row">
+            <label for="password">Contraseña</label>
+          </div>
+
+          <div class="row">
+            <input formControlName="password" class="w-50" type="text" id="password">
+          </div>
+        </div>
+
+        <div class="my-2">
+          <div class="row">
+            <label for="role">Rol</label>
+          </div>
+
+          <div class="row">
+            <input formControlName="role" class="w-50" type="text" id="role">
+          </div>
+        </div>
+
+        <div class="my-2">
+          <div class="row">
+            <label for="category">Categoría</label>
+          </div>
+
+          <div class="row">
+            <input formControlName="category" class="w-50" type="text" id="category">
+          </div>
+        </div>
+
+        <div class="my-2">
+          <div class="row">
+            <label for="information">Datos adicionales</label>
+          </div>
+
+          <div class="row">
+            <textarea formControlName="information" class="w-50" id="information"></textarea>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-6 col-12 d-flex align-items-center justify-content-center">
+        <div>
+          <div class="row justify-content-center">
+            <img src="assets/images/descarga.png" alt="user-imagen">
+          </div>
+          <div class="row justify-content-center">
+            <input type="file" formControlName="image" class="btn btn-dark my-3">
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="d-flex justify-content-center">
+      <button type="submit" class="btn btn-success mr-5">Guardar cambios</button>
+      <button routerLink="../list" class="btn btn-danger">Cancelar</button>
+    </div>
+  </form>
+</div>
