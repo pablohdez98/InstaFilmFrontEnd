@@ -44,7 +44,7 @@ export class UsersListComponent implements OnInit {
     console.log(id);
   }
 
-  deleteUser() {
+  deleteUser(id) {
     Swal.fire({
       title: 'Are you sure?',
       text: 'You won\'t be able to revert this!',
@@ -55,6 +55,7 @@ export class UsersListComponent implements OnInit {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.value) {
+        this.userService.deleteUser(id).subscribe(data => console.log(data));
         Swal.fire({
           title: 'Usuario borrado',
           text: 'El usuario X se ha borrado correctamente',
