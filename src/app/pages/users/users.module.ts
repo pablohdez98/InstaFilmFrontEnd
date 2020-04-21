@@ -9,6 +9,7 @@ import { UpdateUserComponent } from './update-user/update-user.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {DataTablesModule} from 'angular-datatables';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import {DataTablesModule} from 'angular-datatables';
     CommonModule,
     UsersRoutingModule,
     ReactiveFormsModule,
-    DataTablesModule
+    DataTablesModule,
+    FontAwesomeModule
   ]
 })
 export class UsersModule { }
