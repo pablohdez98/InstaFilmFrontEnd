@@ -16,7 +16,6 @@ export class UpdateUserComponent implements OnInit {
       name: ['', Validators.required],
       surname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
       role: ['', Validators.required],
       category: ['', Validators.required],
       information: '',
