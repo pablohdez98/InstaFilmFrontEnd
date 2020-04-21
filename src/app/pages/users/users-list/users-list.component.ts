@@ -1,5 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import Swal from 'sweetalert2';
+import {MatTableDataSource} from '@angular/material/table';
+import {MatSort} from '@angular/material/sort';
+import {MatPaginator} from '@angular/material/paginator';
+import {UserService} from '../../../services/user.service';
+
+const ELEMENT_DATA: any = [
+  {surname: 'Hernandez', name: 'Pablo', category: 1, role: 3},
+  {surname: 'Hernandez', name: 'Pablo', category: 1, role: 3},
+  {surname: 'Hernandez', name: 'Pablo', category: 1, role: 3},
+];
 
 @Component({
   selector: 'app-users-list',
@@ -7,19 +17,31 @@ import Swal from 'sweetalert2';
   styleUrls: ['./users-list.component.scss']
 })
 export class UsersListComponent implements OnInit {
-  datatableOption: DataTables.Settings = {
-    language: {
-      url: '//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json'
-    }
-  };
 
-  constructor() { }
+  displayedColumns: string[] = ['lastName', 'name', 'category', 'role', 'actions'];
+  dataSource;
+
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
+
+  constructor(private userService: UserService) {}
 
   ngOnInit() {
+    this.userService.getUsers().subscribe(data => {
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      console.log(data);
+    });
   }
 
-  updateUser() {
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  updateUser(id) {
     console.log('Actualizar funciona');
+    console.log(id);
   }
 
   deleteUser() {

@@ -1,30 +1,42 @@
-<div class="row justify-content-between container-fluid align-items-center mb-2 pr-0">
-  <div class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="Buscador" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-  </div>
-  <button routerLink="../new" class="btn btn-success">Crear usuario</button>
-</div>
-<table class="table table-responsive-sm" datatable [dtOptions]="datatableOption">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Imagen</th>
-      <th scope="col">Apellidos, Nombre <span class="fas fa-arrow-up mr-1"></span><span class="fas fa-arrow-down"></span></th>
-      <th scope="col">Categoría</th>
-      <th scope="col">Rol</th>
-      <th scope="col">Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><i class="fas fa-user-circle"></i></td>
-      <td>Hernández Carrascosa, Pablo</td>
-      <td>Categoría</td>
-      <td>Estudiante</td>
-      <td>
-        <span (click)="updateUser()"><i class="fas fa-user-edit mr-1"></i></span>
-        <span (click)="deleteUser()"><i class="fas fa-trash text-danger"></i></span>
-      </td>
-    </tr>
-  </tbody>
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="lastName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Apellido </th>
+    <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="category">
+    <th mat-header-cell *matHeaderCellDef> Categoría </th>
+    <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="role">
+    <th mat-header-cell *matHeaderCellDef> Rol </th>
+    <td mat-cell *matCellDef="let element"> {{element.rol}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Acciones </th>
+    <td mat-cell *matCellDef="let element">
+      <span (click)="updateUser(element.id)"><i class="fas fa-user-edit mr-1"></i></span>
+      <span (click)="deleteUser()"><i class="fas fa-trash text-danger"></i></span>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
