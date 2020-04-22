@@ -5,12 +5,6 @@ import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
 import {UserService} from '../../../services/user.service';
 
-const ELEMENT_DATA: any = [
-  {surname: 'Hernandez', name: 'Pablo', category: 1, role: 3},
-  {surname: 'Hernandez', name: 'Pablo', category: 1, role: 3},
-  {surname: 'Hernandez', name: 'Pablo', category: 1, role: 3},
-];
-
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',
@@ -18,8 +12,8 @@ const ELEMENT_DATA: any = [
 })
 export class UsersListComponent implements OnInit {
 
-  displayedColumns: string[] = ['lastName', 'name', 'category', 'role', 'actions'];
-  dataSource;
+  public displayedColumns: string[] = ['lastName', 'name', 'category', 'role', 'actions'];
+  public dataSource;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
@@ -31,7 +25,6 @@ export class UsersListComponent implements OnInit {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      console.log(data);
     });
   }
 
@@ -39,26 +32,22 @@ export class UsersListComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  updateUser(id) {
-    console.log('Actualizar funciona');
-    console.log(id);
-  }
-
   deleteUser(id) {
     Swal.fire({
-      title: 'Are you sure?',
-      text: 'You won\'t be able to revert this!',
+      title: '¿Estás seguro?',
+      text: 'No podrás revertir este cambio',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.value) {
-        this.userService.deleteUser(id).subscribe(data => console.log(data));
+        this.userService.deleteUser(id).subscribe();
         Swal.fire({
           title: 'Usuario borrado',
-          text: 'El usuario X se ha borrado correctamente',
+          text: 'El usuario se ha borrado correctamente',
           icon: 'success',
           timer: 2000,
           timerProgressBar: true,
