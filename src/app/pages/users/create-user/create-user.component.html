@@ -81,7 +81,12 @@
           </div>
 
           <div class="row">
-            <input formControlName="role" class="w-50" type="text" id="role">
+            <select id="role" formControlName="role" class="form-control w-50">
+              <option value="">Selecciona uno</option>
+              <option value="1">Administrador</option>
+              <option value="2">Profesor</option>
+              <option value="3">Estudiante</option>
+            </select>
           </div>
         </div>
 
@@ -134,7 +139,7 @@
     </div>
     <div class="d-flex justify-content-center">
       <button type="submit" class="btn btn-success mr-5">Crear</button>
-      <button routerLink="../list" class="btn btn-danger">Cancelar</button>
+      <button [routerLink]="['/users/list']" class="btn btn-danger">Cancelar</button>
     </div>
    </form>
  </div>

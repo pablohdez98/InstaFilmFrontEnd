@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../../services/user.service";
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-create-user',
@@ -15,7 +16,8 @@ export class CreateUserComponent implements OnInit {
   faEyeSlash = faEyeSlash;
 
   constructor(private formBuilder: FormBuilder,
-              private userService: UserService) {
+              private userService: UserService,
+              private router: Router) {
     this.seePassword = false;
   }
 
@@ -28,8 +30,8 @@ export class CreateUserComponent implements OnInit {
       role: ['', Validators.required],
       category: ['', Validators.required],
       information: '',
-      image:'',
-    })
+      image: '',
+    });
   }
   get FormControl() {
     return this.createForm.controls;
@@ -40,9 +42,10 @@ export class CreateUserComponent implements OnInit {
   toggleSeePassword(): void {
     this.seePassword = !this.seePassword;
   }
-  onSubmit(form){
-    if(this.createForm.status === 'VALID'){
-      this.userService.createUser(form).subscribe(res => console.log(res));
+  async onSubmit(form) {
+    if (this.createForm.status === 'VALID') {
+      this.userService.createUser(form).subscribe();
+      await this.router.navigate(['users/list']);
     } else {
       this.createForm.markAllAsTouched();
     }

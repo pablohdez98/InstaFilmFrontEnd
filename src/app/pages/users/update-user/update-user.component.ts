@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {UserService} from "../../../services/user.service";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UserService} from '../../../services/user.service';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import {ActivatedRoute} from "@angular/router";
-import {User} from "../../../services/user";
+import {ActivatedRoute, Router} from '@angular/router';
+import {User} from '../../../services/user';
 
 @Component({
   selector: 'app-update-user',
@@ -20,7 +20,8 @@ export class UpdateUserComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
-              private route: ActivatedRoute
+              private route: ActivatedRoute,
+              private router: Router
   ) { }
 
   ngOnInit() {
@@ -32,12 +33,11 @@ export class UpdateUserComponent implements OnInit {
       role: ['', Validators.required],
       category: ['', Validators.required],
       information: '',
-    })
+    });
     this.route.params.subscribe(params => {
       this.userId = params.id;
       this.userService.getUser(params.id).subscribe(user => {
         this.user = user;
-        console.log(user)
         this.updateForm.setValue({
           name: this.user.name,
           lastName: this.user.lastName,
@@ -59,9 +59,10 @@ export class UpdateUserComponent implements OnInit {
   toggleSeePassword(): void {
     this.seePassword = !this.seePassword;
   }
-  onSubmit(form){
-    if(this.updateForm.status === 'VALID'){
-      this.userService.updateUser(form, this.userId).subscribe(res => console.log(res));
+  async onSubmit(form) {
+    if (this.updateForm.status === 'VALID') {
+      this.userService.updateUser(form, this.userId).subscribe();
+      await this.router.navigate(['users/list']);
     } else {
       this.updateForm.markAllAsTouched();
     }
