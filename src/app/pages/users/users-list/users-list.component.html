@@ -1,6 +1,10 @@
 <mat-form-field>
-  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscador">
 </mat-form-field>
+  <button class="btn btn-success" [routerLink]="['/users/new']">Crear usuario</button>
+</div>
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
 
 <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
