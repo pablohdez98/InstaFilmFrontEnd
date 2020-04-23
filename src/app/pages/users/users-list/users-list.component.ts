@@ -13,7 +13,7 @@ import {UserService} from '../../../services/user.service';
 export class UsersListComponent implements OnInit {
 
   public displayedColumns: string[] = ['lastName', 'name', 'category', 'role', 'actions'];
-  public dataSource;
+  public dataSource
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
