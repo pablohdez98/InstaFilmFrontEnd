@@ -28,13 +28,4 @@ export class UserService {
   deleteUser(id): Observable<any> {
     return this.http.delete(`${this.url}/user/${id}`);
   }
-  searchUser(query): Observable<User[]> {
-    return this.http.get<User[]>(`${this.url}/search-users/${query}`);
-  }
-  getUserImage(id): Observable<any> {
-    return this.http.get(`${this.url}/get-image/${id}`);
-  }
-  uploadUserImage(image, id): Observable<any> {
-    return this.http.post(`${this.url}/upload-image/${id}`, image);
-  }
 }
