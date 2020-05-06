@@ -17,6 +17,9 @@ export class UserService {
   login(form): Observable<any> {
     return this.http.post(this.url + '/login', form);
   }
+  signup(form): Observable<any> {
+    return this.http.post(this.url + '/register', form);
+  }
 
   getUsers(): Observable<User[]> {
    return this.http.get<User[]>(`${this.url}/users`);
