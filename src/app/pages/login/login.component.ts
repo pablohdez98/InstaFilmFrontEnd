@@ -20,27 +20,25 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      email: '',
+      password: '',
     });
   }
   async onSubmit(form) {
-    if (this.loginForm.status === 'VALID') {
-      this.userService.login(form).subscribe(
-        async (user) => {
-          localStorage.setItem('user', JSON.stringify(user));
-          await this.router.navigate(['/']);
-        },
-        error => console.log(error)
-      );
-    } else {
-      await Swal.fire({
-        title: 'Error',
-        text: 'El usuario o la contraseña son incorrectos',
-        icon: 'error',
-        confirmButtonText: 'OK',
-      })
-    }
+    this.userService.login(form).subscribe(
+      async (user) => {
+        localStorage.setItem('user', JSON.stringify(user));
+        await this.router.navigate(['/']);
+      },
+      async error => {
+        await Swal.fire({
+          title: 'Error',
+          text: error.error.message,
+          icon: 'error',
+          confirmButtonText: 'OK',
+        })
+      }
+    );
   }
 
 }
