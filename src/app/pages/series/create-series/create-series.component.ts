@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {UserService} from '../../../services/user.service';
 import {Router} from '@angular/router';
+import {SeriesService} from '../../../services/series.service';
 
 @Component({
   selector: 'app-create-series',
@@ -13,7 +13,7 @@ export class CreateSeriesComponent implements OnInit {
   public createForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
-              private userService: UserService,
+              private seriesService: SeriesService,
               private router: Router) {
   }
 
@@ -37,7 +37,7 @@ export class CreateSeriesComponent implements OnInit {
   }
   async onSubmit(form) {
     if (this.createForm.status === 'VALID') {
-      //this.userService.createUser(form).subscribe();
+      this.seriesService.createSeries(form);
       await this.router.navigate(['series/list']);
     } else {
       this.createForm.markAllAsTouched();

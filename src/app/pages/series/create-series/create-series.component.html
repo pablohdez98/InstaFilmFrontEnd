@@ -30,7 +30,7 @@
         </div>
         <div class="row" *ngIf="FormControl.seasons.invalid && FormControl.seasons.touched">
           <small class="text-danger" *ngIf="FormControl.seasons.errors.required">
-            Este campo es obligatorio.
+            Este campo es obligatorio y debe ser numérico.
           </small>
         </div>
 
@@ -40,7 +40,7 @@
         </div>
         <div class="row" *ngIf="FormControl.episodes.invalid && FormControl.episodes.touched">
           <small class="text-danger" *ngIf="FormControl.episodes.errors.required">
-            Este campo es obligatorio.
+            Este campo es obligatorio y debe ser numérico.
           </small>
         </div>
 
@@ -104,7 +104,7 @@
         </div>
         <div class="row" *ngIf="FormControl.year.invalid && FormControl.year.touched">
           <small class="text-danger" *ngIf="FormControl.year.errors.required">
-            Este campo es obligatorio.
+            Este campo es obligatorio y debe ser numérico.
           </small>
         </div>
 
