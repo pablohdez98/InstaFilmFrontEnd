@@ -10,23 +10,38 @@ import {tap} from "rxjs/operators";
 })
 export class UserService {
   private readonly url: string;
-  private currentUser:BehaviorSubject<any>;
+  public currentUser: BehaviorSubject<any>;
 
   constructor(private http: HttpClient,
               private jwtHelperService: JwtHelperService) {
     this.url = 'http://localhost:5000/api';
     this.currentUser = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('user')));
   }
+  isAuthenticated(): boolean {
+    if (!this.currentUser.value) {
+      return false;
+    }
+    if (this.jwtHelperService.isTokenExpired(this.currentUser.value.access_token)){
+      this.logout();
+      return false;
+    }
+    return true;
+  }
+
   login(form): Observable<any> {
     return this.http.post(this.url + '/login', form).pipe(
       tap(user => {
         localStorage.setItem('user', JSON.stringify(user));
-        this.currentUser.next(JSON.stringify(user))
+        this.currentUser.next(JSON.stringify(user));
       })
     );
   }
   signup(form): Observable<any> {
     return this.http.post(this.url + '/register', form);
+  }
+  logout() {
+    this.currentUser.next(null);
+    localStorage.removeItem('user');
   }
 
   getUsers(): Observable<User[]> {
