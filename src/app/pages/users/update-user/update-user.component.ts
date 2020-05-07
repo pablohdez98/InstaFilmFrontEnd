@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {UserService} from '../../../services/user.service';
+import {UserService} from '../../../services/user/user.service';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import {ActivatedRoute, Router} from '@angular/router';
-import {User} from '../../../services/user';
+import {User} from '../../../services/user/user';
 
 @Component({
   selector: 'app-update-user',

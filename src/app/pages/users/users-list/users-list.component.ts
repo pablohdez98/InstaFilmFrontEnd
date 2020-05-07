@@ -3,7 +3,7 @@ import Swal from 'sweetalert2';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
-import {UserService} from '../../../services/user.service';
+import {UserService} from '../../../services/user/user.service';
 
 @Component({
   selector: 'app-users-list',
