@@ -12,13 +12,19 @@ export class FilmService {
   constructor(private http: HttpClient) {
     this.url = 'http://localhost:5000/api';
   }
+  getFilm(id): Observable<Film> {
+    return this.http.get<Film>(`${this.url}/film/${id}`);
+  }
+  getFilms(id): Observable<Film> {
+    return this.http.get<Film>(`${this.url}/films`);
+  }
   createFilm(film): Observable<Film> {
-    return this.http.post<Film>(`${this.url}/films`, film);
+    return this.http.post<Film>(`${this.url}/film`, film);
   }
   updateFilm(film, id): Observable<Film> {
-    return this.http.put<Film>(`${this.url}/films/${id}`, film);
+    return this.http.put<Film>(`${this.url}/film/${id}`, film);
   }
   deleteFilm(id): Observable<Film> {
-    return this.http.delete<Film>(`${this.url}/films/${id}`);
+    return this.http.delete<Film>(`${this.url}/film/${id}`);
   }
 }
