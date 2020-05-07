@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {FilmService} from "../../../services/film/film.service";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-create-series',
@@ -28,7 +29,7 @@ export class CreateFilmsAdminComponent implements OnInit {
       cast: ['', Validators.required],
       genre: ['', Validators.required],
       releaseYear: ['', Validators.required],
-      image: '',
+      image_path: '',
     });
   }
   get FormControl() {
@@ -36,8 +37,17 @@ export class CreateFilmsAdminComponent implements OnInit {
   }
   async onSubmit(form) {
     if (this.createForm.status === 'VALID') {
-      this.filmService.createFilm(form).subscribe(res => console.log(res));
-      // await this.router.navigate(['series/list']);
+      this.filmService.createFilm(form).subscribe(
+        () => this.router.navigate(['series/list']),
+        async error => {
+          await Swal.fire({
+            title: 'Error',
+            text: error.error.message,
+            icon: 'error',
+            confirmButtonText: 'OK',
+          })
+      });
+      //
     } else {
       this.createForm.markAllAsTouched();
     }
