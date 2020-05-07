@@ -99,11 +99,11 @@
         </div>
 
         <div class="my-2">
-          <div class="row"><label for="year">Año</label></div>
-          <div class="row"><input formControlName="year" class="w-75" type="number" min="1888" id="year"></div>
+          <div class="row"><label for="releaseYear">Año</label></div>
+          <div class="row"><input formControlName="releaseYear" class="w-75" type="number" min="1888" id="releaseYear"></div>
         </div>
-        <div class="row" *ngIf="FormControl.year.invalid && FormControl.year.touched">
-          <small class="text-danger" *ngIf="FormControl.year.errors.required">
+        <div class="row" *ngIf="FormControl.releaseYear.invalid && FormControl.releaseYear.touched">
+          <small class="text-danger" *ngIf="FormControl.releaseYear.errors.required">
             Este campo es obligatorio y debe ser numérico.
           </small>
         </div>
@@ -119,7 +119,7 @@
             <img src="assets/images/descarga.png" alt="series-image">
           </div>
           <div class="row justify-content-center">
-            <input type="file" formControlName="image" class="btn btn-dark my-3">
+            <input type="url" formControlName="image_path" class="btn btn-dark my-3">
           </div>
         </div>
       </div>

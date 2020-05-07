@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import {SeriesService} from '../../../services/series.service';
+import {SeriesService} from '../../../services/series/series.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-create-series',
@@ -28,8 +29,8 @@ export class CreateSeriesComponent implements OnInit {
       director: ['', Validators.required],
       cast: ['', Validators.required],
       genre: ['', Validators.required],
-      year: ['', Validators.required],
-      image: '',
+      releaseYear: ['', Validators.required],
+      image_path: '',
     });
   }
   get FormControl() {
@@ -37,8 +38,17 @@ export class CreateSeriesComponent implements OnInit {
   }
   async onSubmit(form) {
     if (this.createForm.status === 'VALID') {
-      this.seriesService.createSeries(form);
-      await this.router.navigate(['series/list']);
+      this.seriesService.createSeries(form).subscribe(
+        async () => await this.router.navigate(['admin/series/list']),
+        async error => {
+          await Swal.fire({
+            title: 'Error',
+            text: error.error.message,
+            icon: 'error',
+            confirmButtonText: 'OK',
+          });
+        }
+      );
     } else {
       this.createForm.markAllAsTouched();
     }
