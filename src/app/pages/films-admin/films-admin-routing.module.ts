@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import {SeriesComponent} from "../series/series.component";
 import {CreateFilmsComponent} from "./create-films/create-films.component";
 import {UpdateFilmsComponent} from "./update-films/update-films.component";
 import {ListFilmsComponent} from "./list-films/list-films.component";
 
 const routes: Routes = [
   {
-    path: '', component: SeriesComponent,
+    path: '',
     children: [
       { path: 'new', component: CreateFilmsComponent },
       { path: ':id', component: UpdateFilmsComponent },
