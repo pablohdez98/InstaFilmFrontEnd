@@ -8,7 +8,7 @@ export interface Series {
   director: string;
   cast: string;
   genre: string;
-  year: number;
+  releaseYear: number;
   image_path?: string;
   createdAt: Date;
   updatedAt: Date;

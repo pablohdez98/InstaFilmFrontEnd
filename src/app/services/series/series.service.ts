@@ -10,11 +10,11 @@ export class SeriesService {
   private readonly url: string;
 
   constructor(private http: HttpClient) {
-    this.url = 'http://localhost:5000/api/admin';
+    this.url = 'http://localhost:5000/api';
   }
 
-  getSerieses(): Observable<Series> {
-    return this.http.get<Series>(`${this.url}/serieses`);
+  getSerieses(): Observable<Series[]> {
+    return this.http.get<Series[]>(`${this.url}/serieses`);
   }
   getSeries(id): Observable<Series> {
     return this.http.get<Series>(`${this.url}/series/${id}`);
