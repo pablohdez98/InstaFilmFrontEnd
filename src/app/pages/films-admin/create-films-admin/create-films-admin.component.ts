@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {UserService} from '../../../services/user.service';
 import {Router} from '@angular/router';
 import {FilmService} from "../../../services/film/film.service";
 
@@ -19,7 +18,6 @@ export class CreateFilmsAdminComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(localStorage.getItem('user'))
     const reg = '(https?:\\/\\/)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*(\\?.*)?';
     this.createForm = this.formBuilder.group({
       title: ['', Validators.required],
@@ -29,7 +27,7 @@ export class CreateFilmsAdminComponent implements OnInit {
       director: ['', Validators.required],
       cast: ['', Validators.required],
       genre: ['', Validators.required],
-      year: ['', Validators.required],
+      releaseYear: ['', Validators.required],
       image: '',
     });
   }
