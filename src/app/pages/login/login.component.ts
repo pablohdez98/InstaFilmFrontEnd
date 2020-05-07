@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup} from "@angular/forms";
 import {UserService} from "../../services/user.service";
 import {Router} from "@angular/router";
 import Swal from "sweetalert2";
@@ -26,10 +26,7 @@ export class LoginComponent implements OnInit {
   }
   async onSubmit(form) {
     this.userService.login(form).subscribe(
-      async (user) => {
-        localStorage.setItem('user', JSON.stringify(user));
-        await this.router.navigate(['/']);
-      },
+      async () => await this.router.navigate(['/']),
       async error => {
         await Swal.fire({
           title: 'Error',
