@@ -6,10 +6,10 @@ import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-create-series',
-  templateUrl: './create-films-admin.component.html',
-  styleUrls: ['./create-films-admin.component.scss']
+  templateUrl: './create-films.component.html',
+  styleUrls: ['./create-films.component.scss']
 })
-export class CreateFilmsAdminComponent implements OnInit {
+export class CreateFilmsComponent implements OnInit {
 
   public createForm: FormGroup;
 
@@ -38,7 +38,7 @@ export class CreateFilmsAdminComponent implements OnInit {
   async onSubmit(form) {
     if (this.createForm.status === 'VALID') {
       this.filmService.createFilm(form).subscribe(
-        () => this.router.navigate(['series/list']),
+        () => this.router.navigate(['/admin/films']),
         async error => {
           await Swal.fire({
             title: 'Error',
