@@ -13,12 +13,12 @@ export class FilmService {
     this.url = 'http://localhost:5000/api';
   }
   createFilm(film): Observable<Film> {
-    return this.http.post<Film>(`${this.url}/movie`, film);
+    return this.http.post<Film>(`${this.url}/films`, film);
   }
   updateFilm(film, id): Observable<Film> {
-    return this.http.put<Film>(`${this.url}/movie/${id}`, film);
+    return this.http.put<Film>(`${this.url}/films/${id}`, film);
   }
   deleteFilm(id): Observable<Film> {
-    return this.http.delete<Film>(`${this.url}/movie/${id}`);
+    return this.http.delete<Film>(`${this.url}/films/${id}`);
   }
 }
