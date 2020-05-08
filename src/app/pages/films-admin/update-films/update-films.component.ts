@@ -12,7 +12,7 @@ import {Film} from "../../../services/film/film";
 })
 export class UpdateFilmsComponent implements OnInit {
   public updateForm: FormGroup;
-  public filmId: string;
+  public film: Film;
   constructor(private formBuilder: FormBuilder,
               private filmService: FilmService,
               private router: Router,
@@ -34,7 +34,7 @@ export class UpdateFilmsComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.filmService.getFilm(params.id).subscribe(
         film => {
-          this.filmId = params.id;
+          this.film = film;
           this.updateForm.setValue({
             title: film.title,
             synopsis: film.synopsis,
@@ -55,8 +55,8 @@ export class UpdateFilmsComponent implements OnInit {
   }
   async onSubmit(form) {
     if (this.updateForm.status === 'VALID') {
-      this.filmService.updateFilm(form, this.filmId).subscribe(
-        () => this.router.navigate(['admin/films']),
+      this.filmService.updateFilm(form, this.film.id).subscribe(
+        async () => await this.router.navigate(['admin/films']),
         async error => {
           await Swal.fire({
             title: 'Error',
@@ -65,7 +65,6 @@ export class UpdateFilmsComponent implements OnInit {
             confirmButtonText: 'OK',
           })
         });
-      await this.router.navigate(['series']);
     } else {
       this.updateForm.markAllAsTouched();
     }
