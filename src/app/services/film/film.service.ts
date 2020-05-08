@@ -15,8 +15,8 @@ export class FilmService {
   getFilm(id): Observable<Film> {
     return this.http.get<Film>(`${this.url}/film/${id}`);
   }
-  getFilms(id): Observable<Film> {
-    return this.http.get<Film>(`${this.url}/films`);
+  getFilms(): Observable<Film[]> {
+    return this.http.get<Film[]>(`${this.url}/films`);
   }
   createFilm(film): Observable<Film> {
     return this.http.post<Film>(`${this.url}/film`, film);
