@@ -1,5 +1,5 @@
 <div class="row justify-content-between container-fluid align-items-center mb-2 pr-0">
-  <mat-form-field>
+  <mat-form-field class="ml-3">
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscador">
   </mat-form-field>
   <button class="btn btn-success" [routerLink]="['/admin/films/new']">Crear película</button>
