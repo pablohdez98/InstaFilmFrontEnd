@@ -50,6 +50,8 @@ export class ListSeriesComponent implements OnInit {
           () => {
             const data = this.dataSource._data.value;
             this.dataSource = new MatTableDataSource(data.filter((series: Series) => series.id !== id));
+            this.dataSource.paginator = this.paginator;
+            this.dataSource.sort = this.sort;
             Swal.fire({
               title: 'Serie borrada',
               text: 'La serie se ha borrado correctamente',

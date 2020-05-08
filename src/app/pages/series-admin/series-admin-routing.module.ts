@@ -10,10 +10,9 @@ const routes: Routes = [
   {
     path: '', component: SeriesAdminComponent,
     children: [
-      { path: 'list', component: ListSeriesComponent },
+      { path: '', component: ListSeriesComponent },
       { path: 'new', component: CreateSeriesComponent },
-      { path: 'update/:id', component: UpdateSeriesComponent },
-      { path: '', redirectTo: 'list'}
+      { path: ':id', component: UpdateSeriesComponent }
     ]
   }];
 

@@ -1,5 +1,5 @@
 <div class="min-vh-100">
-  <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark mb-2">
     <a class="navbar-brand text-white" href="#">InstaFilm</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -11,19 +11,19 @@
           <a class="nav-link text-white" [routerLink]="['#']">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" [routerLink]="['film/list']">Películas</a>
+          <a class="nav-link text-white" [routerLink]="['film']">Películas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" [routerLink]="['series/list']">Series</a>
+          <a class="nav-link text-white" [routerLink]="['series']">Series</a>
         </li>
         <li class="nav-item dropdown" *ngIf="currentUser && role != 3">
           <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Panel de Administrador
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" [routerLink]="" *ngIf="role == 1">Usuarios</a>
-            <a class="dropdown-item" [routerLink]="">Películas</a>
-            <a class="dropdown-item" [routerLink]="['admin/series/list']">Series</a>
+            <a class="dropdown-item" [routerLink]="['admin/users']" *ngIf="role == 1">Usuarios</a>
+            <a class="dropdown-item" [routerLink]="['admin/films']">Películas</a>
+            <a class="dropdown-item" [routerLink]="['admin/series']">Series</a>
           </div>
         </li>
       </ul>
@@ -32,7 +32,7 @@
     <div>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item" *ngIf="!currentUser">
-          <a class="nav-link text-white" [routerLink]="['/login']"><i class="fa fa-user"></i></a>
+          <a class="nav-link text-white" [routerLink]="['/login']">Iniciar sesión<i class="ml-2 fa fa-user"></i></a>
         </li>
         <li class="nav-item" *ngIf="currentUser">
           <a class="nav-link text-white" (click)="logout()"><i class="fa fa-sign-out-alt"></i></a>
