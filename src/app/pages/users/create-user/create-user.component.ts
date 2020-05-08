@@ -45,7 +45,7 @@ export class CreateUserComponent implements OnInit {
   async onSubmit(form) {
     if (this.createForm.status === 'VALID') {
       this.userService.createUser(form).subscribe();
-      await this.router.navigate(['users/list']);
+      await this.router.navigate(['/admin/users']);
     } else {
       this.createForm.markAllAsTouched();
     }
