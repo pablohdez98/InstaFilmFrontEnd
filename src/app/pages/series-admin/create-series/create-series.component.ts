@@ -39,7 +39,7 @@ export class CreateSeriesComponent implements OnInit {
   async onSubmit(form) {
     if (this.createForm.status === 'VALID') {
       this.seriesService.createSeries(form).subscribe(
-        async () => await this.router.navigate(['admin/series/list']),
+        async () => await this.router.navigate(['admin/series']),
         async error => {
           await Swal.fire({
             title: 'Error',
