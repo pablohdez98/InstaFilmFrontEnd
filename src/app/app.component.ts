@@ -21,7 +21,9 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.userService.currentUser.subscribe(user => {
       this.currentUser = user;
-      this.role = this.jwtHelperService.decodeToken(user.access_token).role;
+      if (user) {
+        this.role = this.jwtHelperService.decodeToken(user.access_token).role;
+      }
     });
   }
   logout() {
