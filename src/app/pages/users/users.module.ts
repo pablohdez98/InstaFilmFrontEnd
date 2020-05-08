@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { UsersRoutingModule } from './users-routing.module';
 import { UsersComponent } from './users.component';
 import { UsersListComponent } from './users-list/users-list.component';
-import { DeleteUserComponent } from './delete-user/delete-user.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -17,7 +16,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 @NgModule({
-  declarations: [UsersComponent, UsersListComponent, DeleteUserComponent, UpdateUserComponent, CreateUserComponent],
+  declarations: [UsersComponent, UsersListComponent, UpdateUserComponent, CreateUserComponent],
   imports: [
     CommonModule,
     UsersRoutingModule,

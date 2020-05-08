@@ -62,7 +62,7 @@ export class UpdateUserComponent implements OnInit {
   async onSubmit(form) {
     if (this.updateForm.status === 'VALID') {
       this.userService.updateUser(form, this.userId).subscribe();
-      await this.router.navigate(['users/list']);
+      await this.router.navigate(['/admin/users']);
     } else {
       this.updateForm.markAllAsTouched();
     }
