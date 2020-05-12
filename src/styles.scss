@@ -8,4 +8,21 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 table {
   width: 100%;
 }
+.div-img{
+  height: calc(13vw - 10px);
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.imagen{
+  height: 100%;
+  position: absolute;
+  top: -9999px;
+  bottom: -9999px;
+  left: -9999px;
+  right: -9999px;
+  margin: auto;
+  object-fit: cover;
+  width: 100%;
+}
 
