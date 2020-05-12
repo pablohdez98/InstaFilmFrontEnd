@@ -28,7 +28,7 @@ export class UpdateSeriesComponent implements OnInit {
       trailer: ['', [Validators.required, Validators.pattern(reg)]],
       director: ['', Validators.required],
       cast: ['', Validators.required],
-      genre: ['drama', Validators.required],
+      genre: ['', Validators.required],
       releaseYear: ['', Validators.required],
       image_path: '',
     });
