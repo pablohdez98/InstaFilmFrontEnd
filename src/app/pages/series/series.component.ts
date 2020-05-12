@@ -16,7 +16,6 @@ export class SeriesComponent implements OnInit {
   ngOnInit(): void {
     this.seriesService.getSerieses().subscribe(data => {
       this.series = data;
-      console.log(this.series);
     });
   }
 
