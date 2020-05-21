@@ -12,7 +12,6 @@ export class SeriesService {
   constructor(private http: HttpClient) {
     this.url = 'http://localhost:5000/api';
   }
-
   getSerieses(): Observable<Series[]> {
     return this.http.get<Series[]>(`${this.url}/serieses`);
   }
@@ -27,5 +26,11 @@ export class SeriesService {
   }
   deleteSeries(id): Observable<Series> {
     return this.http.delete<Series>(`${this.url}/series/${id}`);
+  }
+  getPopular(): Observable<Series[]> {
+    return this.http.get<Series[]>(`${this.url}/landing/series/popular`);
+  }
+  getLatest(): Observable<Series[]> {
+    return this.http.get<Series[]>(`${this.url}/landing/series/latest`);
   }
 }

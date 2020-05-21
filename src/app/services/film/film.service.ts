@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Film} from "./film";
+import {Global} from "../global";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class FilmService {
   private readonly url: string;
 
   constructor(private http: HttpClient) {
-    this.url = 'http://localhost:5000/api';
+    this.url = Global.url;
   }
   getFilm(id): Observable<Film> {
     return this.http.get<Film>(`${this.url}/film/${id}`);
@@ -26,5 +27,11 @@ export class FilmService {
   }
   deleteFilm(id): Observable<Film> {
     return this.http.delete<Film>(`${this.url}/film/${id}`);
+  }
+  getPopular(): Observable<Film[]> {
+    return this.http.get<Film[]>(`${this.url}/landing/films/popular`);
+  }
+  getLatest(): Observable<Film[]> {
+    return this.http.get<Film[]>(`${this.url}/landing/films/latest`);
   }
 }
