@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'admin/series', loadChildren: () => import('./pages/series-admin/series-admin.module').then(m => m.SeriesAdminModule) },
   { path: 'series', loadChildren: () => import('./pages/series/series.module').then(m => m.SeriesModule) },
   { path: 'films', loadChildren: () => import('./pages/films/films.module').then(m => m.FilmsModule) },
+  { path: '', loadChildren: () => import('./pages/landing/landing.module').then(m => m.LandingModule) },
 ];
 
 @NgModule({

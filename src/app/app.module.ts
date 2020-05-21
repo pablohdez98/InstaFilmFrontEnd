@@ -10,12 +10,12 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatInputModule} from '@angular/material/input';
 import {HttpClientModule} from '@angular/common/http';
-import {JwtHelperService, JwtModule} from "@auth0/angular-jwt";
+import {JwtModule} from "@auth0/angular-jwt";
 import {jwtConfig} from "./JWTconfig";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
