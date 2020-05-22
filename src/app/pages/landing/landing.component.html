@@ -1,7 +1,11 @@
 <div class="container">
   <h2>Películas más vistas</h2>
-  <app-carousel [images]="images"></app-carousel>
-  <h2>Películas más vistas</h2>
-  <app-carousel></app-carousel>
+  <app-carousel *ngIf="filmsPopular" [elements]="filmsPopular" [type]="'film'"></app-carousel>
+  <h2>Series más vistas</h2>
+  <app-carousel *ngIf="seriesPopular" [elements]="seriesPopular" [type]="'series'"></app-carousel>
+  <h2>Últimas películas</h2>
+  <app-carousel *ngIf="filmsLatest" [elements]="filmsLatest" [type]="'film'"></app-carousel>
+  <h2>Últimas series</h2>
+  <app-carousel *ngIf="seriesLatest" [elements]="seriesLatest" [type]="'series'"></app-carousel>
 </div>
 

@@ -1,6 +1,15 @@
 <ngx-slick-carousel class="carousel"
                     [config]="slideConfig">
-  <div ngxSlickItem *ngFor="let slide of slides" class="slide">
-    <img src="{{ slide.img }}" height="200" alt="" width="100%">
+  <div ngxSlickItem *ngFor="let element of elements"
+       [routerLink]="[type === 'series' ? '/series/':'/film/',element.id]"
+       class="mx-1 container-carousel">
+    <img *ngIf="element.image_path; else not_image"
+         src="{{ element.image_path }}" alt="no foto" class="img-carousel">
+    <ng-template #not_image>
+      <img class="img-carousel" src="https://sainfoinc.com/wp-content/uploads/2018/02/image-not-available-300x300.jpg" alt="no foto">
+    </ng-template>
+    <div class="middle">
+      <h5>{{element.title}}</h5>
+    </div>
   </div>
 </ngx-slick-carousel>

@@ -6,18 +6,18 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./carousel.component.scss']
 })
 export class CarouselComponent implements OnInit {
-  @Input() images: any[];
+  @Input() elements: any[];
+  @Input() type: string;
   slides: any[];
   slideConfig: any;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.slides = this.images;
     this.slideConfig = {
-      infinite: true,
-      slidesToShow: 10,
-      slidesToScroll: 10,
+      infinite: false,
+      slidesToShow: 8,
+      slidesToScroll: 8,
       arrows: true,
       dots: true,
     };

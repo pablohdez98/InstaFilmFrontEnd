@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FilmService} from "../../services/film/film.service";
-import {SeriesService} from "../../services/series/series.service";
-import {Series} from "../../services/series/series";
-import {Film} from "../../services/film/film";
+import {FilmService} from '../../services/film/film.service';
+import {SeriesService} from '../../services/series/series.service';
+import {Series} from '../../services/series/series';
+import {Film} from '../../services/film/film';
 
 @Component({
   selector: 'app-landing',
@@ -14,7 +14,6 @@ export class LandingComponent implements OnInit {
   seriesPopular: Series[];
   filmsLatest: Film[];
   filmsPopular: Film[];
-  images: any[];
   constructor(private filmService: FilmService,
               private seriesService: SeriesService) { }
 
@@ -31,23 +30,5 @@ export class LandingComponent implements OnInit {
     this.seriesService.getPopular().subscribe(series => {
       this.seriesPopular = series;
     });
-    this.images = [
-      {img: "http://placehold.it/200x150/000000%22%7D"},
-      {img: "http://placehold.it/200x250/000000%22%7D"},
-      {img: "http://placehold.it/200x150/000000%22%7D"},
-      {img: "http://placehold.it/200x150/000000%22%7D"},
-      {img: "http://placehold.it/200x150/000000%22%7D"},
-      {img: "http://placehold.it/200x150/000000%22%7D"},
-      {img: "http://placehold.it/200x150/000000%22%7D"},
-      {img: "http://placehold.it/200x150/000000%22%7D"},
-      {img: "http://placehold.it/200x150/000000%22%7D"},
-      {img: "http://placehold.it/200x150/000000%22%7D"},
-      {img: "http://placehold.it/200x150/000000%22%7D"},
-      {img: "http://placehold.it/200x150/000000%22%7D"},
-      {img: "http://placehold.it/200x150/000000%22%7D"},
-      {img: "http://placehold.it/200x150/000000%22%7D"},
-      {img: "http://placehold.it/200x150/000000%22%7D"},
-      {img: "http://placehold.it/200x150/000000%22%7D"},
-    ];
   }
 }
