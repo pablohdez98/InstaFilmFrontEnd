@@ -25,4 +25,10 @@ table {
   object-fit: cover;
   width: 100%;
 }
+.slick-prev:before {
+  color: gray !important;
+}
+.slick-next:before {
+  color: gray !important;
+}
 
