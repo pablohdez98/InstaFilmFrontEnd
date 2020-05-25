@@ -1,0 +1,25 @@
+<div class="container" *ngIf="series">
+  <h1>{{series.title}}</h1>
+  <div class="row">
+    <div class="col-12 col-md-4">
+      <img src="{{series.image_path}}" alt="" class="w-100">
+    </div>
+    <div class="col-12 col-md-8 bordes px-5">
+      <h3 class="mt-2">Información</h3>
+      <p><span class="details-color">Desde</span> {{series.releaseYear}}</p>
+      <p><span class="details-color">Dirigida por</span> {{series.director}}</p>
+      <p><span class="details-color">Género</span> {{series.genre}}</p>
+      <p><span class="details-color">Reparto</span> {{series.cast}}</p>
+      <p><span class="details-color">Número de temporadas</span> {{series.seasons}}</p>
+      <p><span class="details-color">Número de episodios</span> {{series.episodes}}</p>
+    </div>
+  </div>
+  <br>
+  <h2>Sinopsis</h2>
+  <p class="text-justify">{{series.synopsis}}</p>
+  <br>
+  <div class="row justify-content-center">
+    <iframe class="col-12 col-md-8" height="400px"  [src]="series.trailer | safe" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+
+</div>
