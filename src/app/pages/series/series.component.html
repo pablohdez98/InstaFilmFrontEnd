@@ -15,12 +15,14 @@
     <tbody>
       <tr *ngFor="let serie of series" class="row">
         <td *ngIf="serie.image_path; else not_image" class="div-img col-2 my-2">
-          <img class="imagen" [src]="serie.image_path" alt="no foto">
+          <a class="nav-link text-dark" [routerLink]="['/series/', serie.id]">
+            <img class="imagen" [src]="serie.image_path" alt="no foto">
+          </a>
         </td>
         <ng-template #not_image>
           <td class="div-img col-2 my-2"><img class="imagen" src="https://sainfoinc.com/wp-content/uploads/2018/02/image-not-available-300x300.jpg" alt="no foto"></td>
         </ng-template>
-        <td class="col-2 my-auto">{{serie.title}}</td>
+        <td class="col-2 my-auto"><a class="nav-link text-dark" [routerLink]="['/series/', serie.id]">{{serie.title}}</a></td>
         <td class="col-2 my-auto">{{serie.genre}}</td>
         <td class="col-1 my-auto">{{serie.releaseYear}}</td>
         <td class="col-2 my-auto">{{serie.seasons}}</td>

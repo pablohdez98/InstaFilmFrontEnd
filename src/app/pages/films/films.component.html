@@ -15,12 +15,14 @@
     <tbody>
     <tr *ngFor="let film of films" class="row">
       <td *ngIf="film.image_path; else not_image" class="div-img col-2 my-2">
-        <img class="imagen" [src]="film.image_path" alt="no foto">
+        <a [routerLink]="['/films/', film.id]">
+          <img [routerLink]="['/films/', film.id]" class="imagen" [src]="film.image_path" alt="no foto">
+        </a>
       </td>
       <ng-template #not_image>
         <td class="div-img col-2 my-2"><img class="imagen" src="https://elpais.com/deportes/imagenes/2019/01/14/actualidad/1547488826_847018_1547489813_noticia_grande.jpg" alt="no foto"></td>
       </ng-template>
-      <td class="col-2 my-auto">{{film.title}}</td>
+      <td class="col-2 my-auto"><a class="nav-link text-dark" [routerLink]="['/films/', film.id]">{{film.title}}</a></td>
       <td class="col-2 my-auto">{{film.genre}}</td>
       <td class="col-1 my-auto">{{film.releaseYear}}</td>
       <td class="col-2 my-auto">{{film.duration}}</td>
