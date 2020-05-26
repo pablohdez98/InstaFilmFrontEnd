@@ -1,7 +1,7 @@
 <ngx-slick-carousel class="carousel"
                     [config]="slideConfig">
   <div ngxSlickItem *ngFor="let element of elements"
-       [routerLink]="[type === 'series' ? '/series/':'/film/',element.id]"
+       [routerLink]="[type === 'series' ? '/series/':'/films/',element.id]"
        class="mx-1 container-carousel">
     <img *ngIf="element.image_path; else not_image"
          src="{{ element.image_path }}" alt="no foto" class="img-carousel">

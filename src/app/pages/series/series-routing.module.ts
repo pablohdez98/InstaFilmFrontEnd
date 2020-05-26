@@ -7,7 +7,7 @@ import {SeriesDetailsComponent} from './series-details/series-details.component'
 const routes: Routes = [
   { path: '', component: SeriesComponent },
   { path: ':id', component: SeriesDetailsComponent}
-];
+  ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
