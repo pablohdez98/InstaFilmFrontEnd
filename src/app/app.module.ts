@@ -12,10 +12,13 @@ import {MatInputModule} from '@angular/material/input';
 import {HttpClientModule} from '@angular/common/http';
 import {JwtModule} from "@auth0/angular-jwt";
 import {jwtConfig} from "./JWTconfig";
+import { FilmDetailsComponent } from './pages/films/film-details/film-details.component';
+import {SharedModule} from "./shared/shared.module";
 
 @NgModule({
   declarations: [
     AppComponent,
+    FilmDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,6 +31,7 @@ import {jwtConfig} from "./JWTconfig";
     MatInputModule,
     HttpClientModule,
     JwtModule.forRoot({config: jwtConfig}),
+    SharedModule,
   ],
   bootstrap: [AppComponent]
 })
