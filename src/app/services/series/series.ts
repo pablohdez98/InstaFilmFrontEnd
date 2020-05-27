@@ -1,3 +1,5 @@
+import {Review} from '../comment/review';
+
 export interface Series {
   id: number;
   title: string;
@@ -10,6 +12,7 @@ export interface Series {
   genre: string;
   releaseYear: number;
   image_path?: string;
+  comments: Review[];
   createdAt: Date;
   updatedAt: Date;
 }
