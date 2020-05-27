@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {SafePipe} from "../pipes/safe.pipe";
+import {SafePipe} from '../pipes/safe.pipe';
+import {CommentsListComponent} from '../comments-list/comments-list.component';
 
 
 
 @NgModule({
-  declarations: [SafePipe],
+  declarations: [SafePipe, CommentsListComponent],
   imports: [
     CommonModule
   ],
-  exports:[SafePipe]
+  exports: [SafePipe, CommentsListComponent]
 })
 export class SharedModule { }
