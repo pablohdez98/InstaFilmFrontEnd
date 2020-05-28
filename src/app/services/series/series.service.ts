@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Series} from './series';
 import {Observable} from 'rxjs';
+import {Review} from "../comment/review";
 
 @Injectable({
   providedIn: 'root'
@@ -32,5 +33,8 @@ export class SeriesService {
   }
   getLatest(): Observable<Series[]> {
     return this.http.get<Series[]>(`${this.url}/landing/series/latest`);
+  }
+  createComment(review): Observable<Review> {
+    return this.http.post<Review>(`${this.url}/series/create-comment`, review);
   }
 }

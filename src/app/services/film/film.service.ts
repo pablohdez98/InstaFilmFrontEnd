@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Film} from "./film";
 import {Global} from "../global";
+import {Review} from "../comment/review";
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +34,8 @@ export class FilmService {
   }
   getLatest(): Observable<Film[]> {
     return this.http.get<Film[]>(`${this.url}/landing/films/latest`);
+  }
+  createComment(review): Observable<Review> {
+    return this.http.post<Review>(`${this.url}/films/create-comment`, review);
   }
 }
