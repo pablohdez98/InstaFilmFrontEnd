@@ -10,7 +10,7 @@ import {tap} from "rxjs/operators";
 })
 export class UserService {
   private readonly url: string;
-  public currentUser: BehaviorSubject<any>;
+    public currentUser: BehaviorSubject<any>;
 
   constructor(private http: HttpClient,
               private jwtHelperService: JwtHelperService) {
@@ -58,5 +58,8 @@ export class UserService {
   }
   deleteUser(id): Observable<any> {
     return this.http.delete(`${this.url}/admin/user/${id}`);
+  }
+  getCurrentUser(): User {
+    return this.jwtHelperService.decodeToken(this.currentUser.value.access_token);
   }
 }

@@ -10,9 +10,10 @@
     <li *ngFor="let review of reviews; let i=index" class="mb-2">
       <div class="comment-main-level">
         <div class="comment-box mx-auto">
-          <div class="comment-head">
+          <div class="comment-head d-flex">
             <h6 class="comment-name">Comentario #{{reviews.length - i}}</h6>
             <span>Publicado el {{review.createdAt | date: 'dd-MM-yyyy hh:mm'}}</span>
+            <span *ngIf="user.sub === review.userId" class="pointer ml-auto" (click)="deleteComment(review.id)"><i class="fas fa-trash text-danger"></i></span>
           </div>
           <div class="comment-content">
             {{review.content}}

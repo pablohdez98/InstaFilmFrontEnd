@@ -37,4 +37,7 @@ export class SeriesService {
   createComment(review): Observable<Review> {
     return this.http.post<Review>(`${this.url}/series/create-comment`, review);
   }
+  deleteComment(id): Observable<Review> {
+    return this.http.delete<Review>(`${this.url}/series/comment/${id}`);
+  }
 }
