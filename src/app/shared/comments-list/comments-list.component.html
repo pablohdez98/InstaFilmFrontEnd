@@ -1,0 +1,24 @@
+<div *ngIf="reviews" class="comments-container">
+  <h1>Comentarios ({{reviews.length}})</h1>
+
+  <form [formGroup]="reviewForm" (ngSubmit)="onSubmit(reviewForm.value)" class="my-3">
+    <textarea class="w-100 p-1" formControlName="content" placeholder="Danos tu opinión..." name="content" rows="5"></textarea>
+    <br>
+    <button type="submit" class="btn p-1 btn-success">Enviar</button>
+  </form>
+  <ul id="comments-list" class="comments-list">
+    <li *ngFor="let review of reviews; let i=index" class="mb-2">
+      <div class="comment-main-level">
+        <div class="comment-box mx-auto">
+          <div class="comment-head">
+            <h6 class="comment-name">Comentario #{{reviews.length - i}}</h6>
+            <span>Publicado el {{review.createdAt | date: 'dd-MM-yyyy hh:mm'}}</span>
+          </div>
+          <div class="comment-content">
+            {{review.content}}
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
