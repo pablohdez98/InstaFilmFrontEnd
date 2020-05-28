@@ -21,5 +21,5 @@
   <div class="row justify-content-center">
     <iframe class="col-12 col-md-8 border-0" height="400px"  [src]="series.trailer | safe" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
-  <app-comments-list [reviews]="series.comments"></app-comments-list>
+  <app-comments-list [id]="series.id" [type]="'series'" [reviews]="series.comments"></app-comments-list>
 </div>
