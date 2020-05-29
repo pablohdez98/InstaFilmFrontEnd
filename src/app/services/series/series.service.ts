@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Series} from './series';
 import {Observable} from 'rxjs';
 import {Review} from "../comment/review";
+import {Film} from '../film/film';
 
 @Injectable({
   providedIn: 'root'
@@ -39,5 +40,14 @@ export class SeriesService {
   }
   deleteComment(id): Observable<Review> {
     return this.http.delete<Review>(`${this.url}/series/comment/${id}`);
+  }
+  getFavorite(): Observable<Series[]> {
+    return this.http.get<Series[]>(`${this.url}/series-user-favorites`);
+  }
+  addFavorite(series): Observable<Series[]> {
+    return this.http.post<Series[]>(`${this.url}/series/add-favorite`, series);
+  }
+  deleteFavorite(id): Observable<Series[]> {
+    return this.http.delete<Series[]>(`${this.url}/series/favorite/${id}`);
   }
 }

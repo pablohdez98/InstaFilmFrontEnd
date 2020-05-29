@@ -41,4 +41,13 @@ export class FilmService {
   deleteComment(id): Observable<Review> {
     return this.http.delete<Review>(`${this.url}/films/comment/${id}`);
   }
+  getFavorite(): Observable<Film[]> {
+    return this.http.get<Film[]>(`${this.url}/films-user-favorites`);
+  }
+  addFavorite(film): Observable<Film[]> {
+    return this.http.post<Film[]>(`${this.url}/films/add-favorite`, film);
+  }
+  deleteFavorite(id): Observable<Film[]> {
+    return this.http.delete<Film[]>(`${this.url}/films/favorite/${id}`);
+  }
 }
