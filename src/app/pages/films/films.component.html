@@ -27,7 +27,7 @@
       <td class="col-1 my-auto">{{film.releaseYear}}</td>
       <td class="col-2 my-auto">{{film.duration}}</td>
       <td class="col-2 my-auto">10</td>
-      <td class="col-1 my-auto"><i class="far fa-heart"></i></td>
+      <td (click)="toogleFavorite(film.id)" class="col-1 my-auto"><fa-icon [icon]="iconHeart" *ngIf="favs" [class]="favs.includes(film.id) ? 'text-danger':'text-secondary'"></fa-icon></td>
     </tr>
     </tbody>
   </table>

@@ -27,7 +27,7 @@
         <td class="col-1 my-auto">{{serie.releaseYear}}</td>
         <td class="col-2 my-auto">{{serie.seasons}}</td>
         <td class="col-2 my-auto">10</td>
-        <td class="col-1 my-auto"><i class="far fa-heart"></i></td>
+        <td (click)="addFavorite(serie.id)" class="col-1 my-auto"><fa-icon [icon]="iconHeart" *ngIf="favs" [class]="favs.includes(serie.id) ? 'text-danger':'text-secondary'"></fa-icon></td>
       </tr>
     </tbody>
   </table>
